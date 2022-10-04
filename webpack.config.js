@@ -28,6 +28,22 @@ const moduleConfig = (tscOptions = {}) => ({
                     }
                 }
             ]
+        },
+        {
+          test: /\.jsx?$/,
+          exclude: /node_modules/,
+          loaders: ['babel-loader']
+        },
+        {
+          test: /\.css$/,
+          loader: 'style-loader!css-loader'
+        },
+        {
+          test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+          loader: 'url-loader',
+          options: {
+            limit: 10000
+          }
         }
     ]
 });
@@ -101,9 +117,9 @@ const backendBuild = (name, entryFile, outputFile = 'server.js') => {
 const availableProjects = {
 
     frontend: frontendBuild('frontend', './src/frontend/main.ts', 'bundle.js'),
-    
+
     backend: backendBuild('backend', './src/backend/main.ts', 'server.js'),
-    
+
     test: backendBuild('test', './src/test.ts', 'test.js'),
 
 };
