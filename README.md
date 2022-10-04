@@ -8,6 +8,7 @@ I did my own extension of being able to download and upload from JSON so that yo
 - Build application (both frontend and backend in http://localhost:8080): `yarn build`
     - Some browser automatically redirects you to `https` so make sure to disable the automatic redirect
 - Run application (port 8080): `yarn start`
+- Visit http://localhost:8080/
 - You can then click "Set up example" and it will be populated as specified in the prompt
 - You also can manually add directories and files using the text boxes and "submit buttons"
 - The UI for clicking is not good, but if you click on a directory or file, you can delete them
