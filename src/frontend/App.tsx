@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import FileSystemForm from './FileSystemForm';
 import FileSystemDisplay, { Directory } from './FileSystemDisplay';
+import jsonData from './exampleFiles.json';
 
 var _ = require('lodash');
 
@@ -76,11 +77,16 @@ function App() {
     }
     currDirectory.directories = [...currDirectory.directories, newDirectory];
     updateRoot(newRoot);
+    console.log("root");
+    console.log(newRoot);
   }
 
   const addFile = (fileName: string) => {
     var newRoot = _.cloneDeep(root);
-    var currDirectory = getCurrDirectoryForFile(newRoot, clickedDirectory.parentIndices);
+    var currDirectory = newRoot;
+    if (clickedDirectory != null) {
+      currDirectory = getCurrDirectoryForFile(newRoot, clickedDirectory.parentIndices);
+    }
     currDirectory.files = [...currDirectory.files, fileName];
     updateRoot(newRoot);
   }
@@ -118,6 +124,18 @@ function App() {
     setClickedDirectoryIndex(index);
   }
 
+  const setupExample = () => {
+    const loadData = () => _.cloneDeep(jsonData);
+    var data = loadData();
+    console.log(data);
+    updateRoot(data);
+  }
+
+  const selectHome = () => {
+    setClickedDirectory(null);
+    setClickedDirectoryIndex(0);
+  }
+
   return (
     <div>
       <FileSystemForm
@@ -125,6 +143,8 @@ function App() {
         addDirectory={addDirectory}
         deleteFile={deleteFile}
         deleteDirectory={deleteDirectory}
+        setupExample={setupExample}
+        selectHome={selectHome}
       />
       <FileSystemDisplay
         root={root}

@@ -48,6 +48,7 @@
   "dependencies": {
     "bootstrap": "^5.2.1",
     "express": "^4.17.1",
+    "json-loader": "^0.5.7",
     "lodash": "^4.17.21",
     "react-bootstrap": "^2.5.0",
     "sass-loader": "^10.1.1"

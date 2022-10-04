@@ -8,10 +8,12 @@ type FileSystemFormProps = {
   addFile: (fileName: string) => void,
   deleteFile: () => void,
   addDirectory: (directoryName: string) => void,
-  deleteDirectory: () => void
+  deleteDirectory: () => void,
+  setupExample: () => void,
+  selectHome: () => void
 }
 
-export default function FileSystemForm({addFile, deleteFile, addDirectory, deleteDirectory}: FileSystemFormProps) {
+export default function FileSystemForm({addFile, deleteFile, addDirectory, deleteDirectory, setupExample, selectHome}: FileSystemFormProps) {
   const [fileNameValue, setFileNameValue] = useState('');
   const [directoryNameValue, setDirectoryNameValue] = useState('');
 
@@ -34,13 +36,13 @@ export default function FileSystemForm({addFile, deleteFile, addDirectory, delet
   };
 
   const handleDeleteFile = () => {
-      event.preventDefault();
-      deleteFile();
+    event.preventDefault();
+    deleteFile();
   }
 
   const handleDeleteDirectory = () => {
-      event.preventDefault();
-      deleteDirectory();
+    event.preventDefault();
+    deleteDirectory();
   }
 
   return (
@@ -68,6 +70,12 @@ export default function FileSystemForm({addFile, deleteFile, addDirectory, delet
       </Button>
       <Button variant="primary" type="submit" onClick={handleDeleteFile}>
         Delete selected file
+      </Button>
+      <Button variant="primary" type="submit" onClick={setupExample}>
+        Set up example
+      </Button>
+      <Button variant="primary" type="submit" onClick={selectHome}>
+        Select home directory
       </Button>
     </div>
   );
