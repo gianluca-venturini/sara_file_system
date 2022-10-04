@@ -25,6 +25,7 @@ function App() {
   const [clickedFileIndex, setClickedFileIndex] = useState(0);
   const [clickedFileParentIndices, setClickedFileParentIndices] = useState([]);
 
+  // TODO: Refactor, DRY
   const getCurrDirectoryToAdd = (newRoot: Directory) => {
     var currDirectory = newRoot;
 
@@ -42,6 +43,7 @@ function App() {
     return {newParentIndices, currDirectory};
   }
 
+  // TODO: Refactor, DRY
   const getCurrDirectoryForFile = (newRoot: Directory, parentIndices: number[]) => {
     var currDirectory = newRoot;
 
@@ -55,6 +57,7 @@ function App() {
     return currDirectory;
   }
 
+  // TODO: Refactor, DRY
   const getCurrDirectoryToDelete = (newRoot: Directory) => {
     var currDirectory = newRoot;
     if (clickedDirectory != null) {
@@ -79,8 +82,6 @@ function App() {
     }
     currDirectory.directories = [...currDirectory.directories, newDirectory];
     updateRoot(newRoot);
-    console.log("root");
-    console.log(newRoot);
   }
 
   const addFile = (fileName: string) => {
@@ -146,14 +147,6 @@ function App() {
     link.download = "files.json";
 
     link.click();
-    //
-    // const fileData = JSON.stringify(root);
-    // const blob = new Blob([fileData], {type: "text/plain"});
-    // const url = URL.createObjectURL(blob);
-    // const link = document.createElement('a');
-    // link.download = "files.txt";
-    // link.href = url;
-    // link.click();
   }
 
   const uploadFromJson = () => {

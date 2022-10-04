@@ -1,37 +1,25 @@
-# Express React Webpack starter
-A starter Webpack 4 configuration for basic projects with Express and React.
+# File system
+An unattractive but effective file system for storing things you are ok losing.
 
-## Features
-- Build single page web apps with typescript.
+I did my own extension of being able to download and upload from JSON so that you don't lose your files when you close the browser.
 
-## Dependencies
-- Install `node`
-    - Use NVM (https://github.com/nvm-sh/nvm): `nvm install lts/dubnium && nvm use lts/dubnium`
-    - Alternatively you can download and install it manually: https://nodejs.org/en/download/
-- Install `yarn ^1.10.1`
-    - Use brew (https://brew.sh/): `brew install yarn`
-    - Alternatively you can download and install it manually: https://classic.yarnpkg.com/en/docs/install
-
-## Development
-- Download and install VSCode: https://code.visualstudio.com/
-- Read the setup guide https://code.visualstudio.com/docs/setup/setup-overview
-    - Launching VSCode from the command line: Open the Command Palette (F1) and type `shell command` to find the `Shell Command: Install 'code' command in PATH command`
-        - After doing this you can start VSCode on a repo with `code .`
-- Install TSLint extension in VSCode https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin
-- In order to run the debugger for backend/tests put a breakpoint in VSCode and run this command in VSCode (`CMD + SHIFT + P`): `Debug: attach node to process`. You can also enable `Debug: Toggle Auto Attach` to start the debugger every time a node process is started from VSCode terminal.
-- To open a terminal in VSCode: ```CTRL + ` ```
-
-## Usage
+## How to run
 - Install dependencies: `yarn install`
 - Build application (both frontend and backend in http://localhost:8080): `yarn build`
     - Some browser automatically redirects you to `https` so make sure to disable the automatic redirect
-- Watch for changes and build application: `yarn build-watch`
-- Build frontend, watch for changes and hot reload (port 8000): `yarn build-hot-reload`
-    - All the backend requests will be forwarded to port 8080 so you need to run the backend
 - Run application (port 8080): `yarn start`
-- Run tests: `yarn test`
-- Remove all the generated files: `yarn clean`
+- You can then click "Set up example" and it will be populated as specified in the prompt
+- You also can manually add directories and files using the text boxes and "submit buttons"
+- The UI for clicking is not good, but if you click on a directory or file, you can delete them
+- Also will add directory/file to directory clicked as specified (add to root if none selected)
+- There's also a weird thing where after you add your first directory, if you want to add to the home directory, you have to click on the home button
 
-## Useful links
-- Typescript guide: https://basarat.gitbook.io/typescript/
-- VSCode custom settings: https://github.com/gianluca-venturini/env_confs/tree/master/vs_codet
+## Areas for improvement
+- Write unit tests
+- Add comments and documentation to better specify what functions do
+- Refactor to move functions out of App
+- Update logic for root element so that it looks better and also you don't need to use home button functionality
+- Improve UI-- show which item is selected, right now it's not possible to see for files, and hard to see for directories since they highlight when clicked to collapse
+- Pagination of file system to make it easier to browse
+- Improve download/upload from JSON-- right now, after you click the download button, you'd have to move the file from your Downloads into this directory to upload the file
+- Make add file/directory form show up on the directory to make it easier to see where you're adding file/directory and avoid scrolling back and forth; same for deleting
