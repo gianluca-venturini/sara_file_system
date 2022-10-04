@@ -118,16 +118,6 @@ function App() {
     setClickedDirectoryIndex(index);
   }
 
-  const createExample = () => {
-    var items = 10000;
-    for (var i = 0; i < currDirectory.directories.length; i++) {
-      if (i == clickedDirectoryIndex) {
-        currDirectory.directories[i].deleted = true;
-        break;
-      }
-    }
-  }
-
   return (
     <div>
       <FileSystemForm
