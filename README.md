@@ -23,4 +23,5 @@ I did my own extension of being able to download and upload from JSON so that yo
 - Improve UI-- show which item is selected, right now it's not possible to see for files, and hard to see for directories since they highlight when clicked to collapse
 - Pagination of file system to make it easier to browse
 - Improve download/upload from JSON-- right now, after you click the download button, you'd have to move the file from your Downloads into this directory to upload the file
+- Use more secure way of downloading files
 - Make add file/directory form show up on the directory to make it easier to see where you're adding file/directory and avoid scrolling back and forth; same for deleting
