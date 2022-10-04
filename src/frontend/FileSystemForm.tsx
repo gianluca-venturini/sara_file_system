@@ -10,10 +10,12 @@ type FileSystemFormProps = {
   addDirectory: (directoryName: string) => void,
   deleteDirectory: () => void,
   setupExample: () => void,
-  selectHome: () => void
+  selectHome: () => void,
+  saveToJson: () => void,
+  uploadFromJson: () => void
 }
 
-export default function FileSystemForm({addFile, deleteFile, addDirectory, deleteDirectory, setupExample, selectHome}: FileSystemFormProps) {
+export default function FileSystemForm({addFile, deleteFile, addDirectory, deleteDirectory, setupExample, selectHome, saveToJson, uploadFromJson}: FileSystemFormProps) {
   const [fileNameValue, setFileNameValue] = useState('');
   const [directoryNameValue, setDirectoryNameValue] = useState('');
 
@@ -76,6 +78,12 @@ export default function FileSystemForm({addFile, deleteFile, addDirectory, delet
       </Button>
       <Button variant="primary" type="submit" onClick={selectHome}>
         Select home directory
+      </Button>
+      <Button variant="primary" type="submit" onClick={saveToJson}>
+        Save to JSON
+      </Button>
+      <Button variant="primary" type="submit" onClick={uploadFromJson}>
+        Upload from JSON
       </Button>
     </div>
   );

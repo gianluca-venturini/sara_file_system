@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import FileSystemForm from './FileSystemForm';
 import FileSystemDisplay, { Directory } from './FileSystemDisplay';
 import jsonData from './exampleFiles.json';
+import savedFiles from './files.json';
+
 
 var _ = require('lodash');
 
@@ -127,13 +129,37 @@ function App() {
   const setupExample = () => {
     const loadData = () => _.cloneDeep(jsonData);
     var data = loadData();
-    console.log(data);
     updateRoot(data);
   }
 
   const selectHome = () => {
     setClickedDirectory(null);
     setClickedDirectoryIndex(0);
+  }
+
+  const saveToJson = () => {
+    const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+      JSON.stringify(root)
+    )}`;
+    const link = document.createElement("a");
+    link.href = jsonString;
+    link.download = "files.json";
+
+    link.click();
+    //
+    // const fileData = JSON.stringify(root);
+    // const blob = new Blob([fileData], {type: "text/plain"});
+    // const url = URL.createObjectURL(blob);
+    // const link = document.createElement('a');
+    // link.download = "files.txt";
+    // link.href = url;
+    // link.click();
+  }
+
+  const uploadFromJson = () => {
+    const loadData = () => _.cloneDeep(savedFiles);
+    var data = loadData();
+    updateRoot(data);
   }
 
   return (
@@ -145,6 +171,8 @@ function App() {
         deleteDirectory={deleteDirectory}
         setupExample={setupExample}
         selectHome={selectHome}
+        saveToJson={saveToJson}
+        uploadFromJson={uploadFromJson}
       />
       <FileSystemDisplay
         root={root}
